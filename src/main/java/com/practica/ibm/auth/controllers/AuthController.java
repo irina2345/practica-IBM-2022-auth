@@ -22,6 +22,9 @@ public class AuthController {
 
         List<String> errors = authService.signup(signupRequestBody);
 
+
+
+
         if (errors.isEmpty()) {
             return ResponseEntity.ok().build();
         }
