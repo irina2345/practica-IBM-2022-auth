@@ -26,10 +26,20 @@ public class AuthService {
     public List<String> signup(SignupRequestBody signupRequestBody) {
         List<String> errors = new ArrayList<>();
 
-        // TODO
-        // exista deja un cont cu acest mail? daca da adauga in lista de erori
-        // Optional<Account> optionalAccount = accountRepository.getAccountByEmail();
-        // optionalAccount.isPresent();
+        Optional<Account> optionalAccount = accountRepository.getAccountByEmail();
+
+        if(optionalAccount.isPresent()){
+
+            errors.add("Error-001");
+
+            /*
+                If    Optional<Account> optionalAccount    returns TRUE, we add an error to the list of errors.
+                Error-001   => Email already used by an account.
+
+            */
+
+        }
+
 
         Account account = new Account();
         account.setEmail(signupRequestBody.getEmail());
@@ -51,7 +61,7 @@ public class AuthService {
 
     @SneakyThrows
     private byte[] generateHash(String password, byte[] salt) {
-        KeySpec keySpec = new PBEKeySpec(password.toCharArray(), salt, 2048, 128);
+        KeySpec keySpec = new PBEKeySpec(password.toCharArray(), salt, 2001, 128);
         SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance("PBEWithHmacSHA512AndaES_256");
         SecretKey secretKey = secretKeyFactory.generateSecret(keySpec);
         return secretKey.getEncoded();

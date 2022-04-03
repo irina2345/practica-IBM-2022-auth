@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface AccountRepository extends MongoRepository<Account, String> {
 
     @Query("{ email: ?0 }")
-    Optional<Account> getAccountByEmail(String email);
+    Optional<Account> getAccountByEmail();
+
 
 }
