@@ -28,8 +28,11 @@ public class AuthService {
 
         // TODO
         // exista deja un cont cu acest mail? daca da adauga in lista de erori
-        // Optional<Account> optionalAccount = accountRepository.getAccountByEmail();
-        // optionalAccount.isPresent();
+         Optional<Account> optionalAccount = accountRepository.getAccountByEmail("a@a.a");
+         if(optionalAccount.isPresent())
+         {
+             errors.add("Contul cu emailul : " + optionalAccount.get() + " exista deja");
+         }
 
         Account account = new Account();
         account.setEmail(signupRequestBody.getEmail());
