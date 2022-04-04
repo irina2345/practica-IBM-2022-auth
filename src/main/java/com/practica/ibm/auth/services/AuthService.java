@@ -26,7 +26,7 @@ public class AuthService {
     public List<String> signup(SignupRequestBody signupRequestBody) {
         List<String> errors = new ArrayList<>();
 
-        Optional<Account> optionalAccount = accountRepository.getAccountByEmail();
+        Optional<Account> optionalAccount = accountRepository.getAccountByEmail(signupRequestBody.getEmail());
 
         if(optionalAccount.isPresent()){
 
