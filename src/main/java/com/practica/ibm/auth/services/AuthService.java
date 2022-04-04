@@ -31,6 +31,11 @@ public class AuthService {
         // Optional<Account> optionalAccount = accountRepository.getAccountByEmail();
         // optionalAccount.isPresent();
 
+        Optional<Account> optionalAccount = accountRepository.getAccountByEmail(signupRequestBody.getEmail());
+        if (optionalAccount.isPresent())
+            errors.add("Cont exista");
+
+
         Account account = new Account();
         account.setEmail(signupRequestBody.getEmail());
         byte[] salt = generateSalt();
