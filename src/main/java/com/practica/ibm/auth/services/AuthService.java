@@ -26,10 +26,10 @@ public class AuthService {
     public List<String> signup(SignupRequestBody signupRequestBody) {
         List<String> errors = new ArrayList<>();
 
-        // TODO
-        // exista deja un cont cu acest mail? daca da adauga in lista de erori
-        // Optional<Account> optionalAccount = accountRepository.getAccountByEmail();
-        // optionalAccount.isPresent();
+        Optional<Account> optionalAccount = accountRepository.getAccountByEmail(signupRequestBody.getEmail());
+        if(optionalAccount.isPresent()){
+            errors.add("Eroare");
+        }
 
         Account account = new Account();
         account.setEmail(signupRequestBody.getEmail());
