@@ -27,11 +27,11 @@ public class AuthService {
         List<String> errors = new ArrayList<>();
 
         //TEMA INCERCARE:
-        //  Optional<Account> optionalAccount = accountRepository.getAccountByEmail();
-        //  if(optionalAccount.isPresent()){
-        //    return optionalAccount.get();
-        //   errors.add("eroare1");
-        // }
+        Optional<Account> optionalAccount = accountRepository.getAccountByEmail(signupRequestBody.getEmail());
+        if (optionalAccount.isPresent()) {
+
+            errors.add("eroare1");
+        }
 
 
         Account account = new Account();
