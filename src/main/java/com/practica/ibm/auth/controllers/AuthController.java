@@ -25,6 +25,7 @@ public class AuthController {
         if (errors.isEmpty()) {
             return ResponseEntity.ok().build();
         }
+
         return ResponseEntity.badRequest().build();
     }
 
