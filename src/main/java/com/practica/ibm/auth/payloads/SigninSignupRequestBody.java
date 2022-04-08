@@ -5,7 +5,7 @@ package com.practica.ibm.auth.payloads;
 import lombok.Getter;
 import lombok.Setter;
 
-public class SignupRequestBody {
+public class SigninSignupRequestBody {
 
     private @Getter @Setter String email;
 
